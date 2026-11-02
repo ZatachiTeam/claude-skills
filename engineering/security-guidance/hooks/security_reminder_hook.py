@@ -129,7 +129,7 @@ Only use exec() if you absolutely need shell features AND the input is guarantee
     },
     {
         "ruleName": "pickle_deserialization",
-        "substrings": ["pickle"],
+        "substrings": ["pickle.load", "pickle.Unpickler", "cPickle.load"],
         "reminder": "⚠️ Security Warning: Using pickle with untrusted content can lead to arbitrary code execution. Consider using JSON or other safe serialization formats instead. Only use pickle if it is explicitly needed or requested by the user.",
     },
     {
@@ -144,7 +144,7 @@ Only use exec() if you absolutely need shell features AND the input is guarantee
     },
     {
         "ruleName": "sql_format_string",
-        "substrings": [".format(", "f\"SELECT", "f'SELECT", "f\"INSERT", "f'INSERT", "f\"UPDATE", "f'UPDATE", "f\"DELETE", "f'DELETE"],
+        "substrings": ["execute(f\"", "execute(f'", "execute(\"SELECT", "execute('SELECT", "execute(\"INSERT", "execute(\"UPDATE", "execute(\"DELETE", "execute(\"select", "execute(\"insert", "execute(\"update", "execute(\"delete", "execute(\"SELECT ", ".execute(\"SELECT"],
         "reminder": "⚠️ Security Warning: Building SQL queries with .format() or f-strings can lead to SQL injection. Use parameterized queries (cursor.execute(sql, params)) or an ORM. Only inline values if they come from a trusted, validated source.",
     },
     {
